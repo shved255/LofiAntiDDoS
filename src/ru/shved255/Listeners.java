@@ -117,7 +117,7 @@ public class Listeners implements Listener {
     String nick = player.getName();	
     noProverka.remove(player);
     plugin.getTimer().remove(nick);
-    Bukkit.getScheduler().cancelAllTasks(); 
+    Bukkit.getScheduler().cancelTasks(plugin);
     	}
     }, 5, 20 * 1);   
   }

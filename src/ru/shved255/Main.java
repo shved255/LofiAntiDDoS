@@ -49,6 +49,7 @@ public class Main extends JavaPlugin {
 	  }
 		    @Override
 		    public void onDisable() {
+		        Bukkit.getScheduler().cancelTasks(this);
 		        System.out.println("|------------------------------------------------------------------|");
 		        System.out.println("|                                                                  |");
 		        System.out.println("|      LofiAntiDDoS: Плагин был выключен! :(                       |");
