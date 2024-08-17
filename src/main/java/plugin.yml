@@ -1,0 +1,7 @@
+name: LofiAntiDDoS
+version: '1.0'
+main: ru.shved255.Main
+prefix: LofiAntiDDoS
+authors: [Shved255]
+commands:
+  confirm:
