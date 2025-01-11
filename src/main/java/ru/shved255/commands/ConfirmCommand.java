@@ -11,12 +11,9 @@ import ru.shved255.Main;
 public class ConfirmCommand implements CommandExecutor {
 
 	private Main plugin;
-	@SuppressWarnings("unused")
-	private Listeners listener;
 	
 	public ConfirmCommand(Main plugin) {
 		this.plugin = plugin;
-		listener = plugin.getListener();
 	}
 	
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -27,8 +24,8 @@ public class ConfirmCommand implements CommandExecutor {
             return true;
         }
         if(listeners == null) return true;
-        listeners.onPlayerConfirm(player, args[0]); 		              
+        listeners.onPlayerConfirm(player, args[0]); 	
         return true;
-      };
+    };
 	
 }

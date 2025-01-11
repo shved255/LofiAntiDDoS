@@ -31,42 +31,36 @@ public class Main extends JavaPlugin {
     	return this.listeners;
     }
 	
-	  public void onEnable() {
-	    	config = new Config(this);
-	    	File cfg = new File(getDataFolder() + File.separator + "config.yml"); {
-	    	if(!cfg.exists()) {
-	    		saveDefaultConfig();
-	    		}
+    @Override
+	public void onEnable() {
+		config = new Config(this);
+	    File cfg = new File(getDataFolder() + File.separator + "config.yml"); {
+	    if(!cfg.exists()) {
+	    	saveDefaultConfig();
 	    	}
-	    	listeners = new Listeners(this);
-	        Bukkit.getPluginManager().registerEvents(listeners, this);
-            System.out.println("|------------------------------------------------------------------|");
-	        System.out.println("|                                                                  |");
-	        System.out.println("|      LofiAntiDDoS: Плагин был включен! :)                        |");
-	        System.out.println("|      Плагин был сделан Shved255 | Discord: Shved255              |");
-	        System.out.println("|------------------------------------------------------------------|");
-		    getCommand("confirm").setExecutor(new ConfirmCommand(this));
-	  		}
-		    @Override
-		    public void onDisable() {
-		        Bukkit.getScheduler().cancelTasks(this);
-		        System.out.println("|------------------------------------------------------------------|");
-		        System.out.println("|                                                                  |");
-		        System.out.println("|      LofiAntiDDoS: Плагин был выключен! :(                       |");
-		        System.out.println("|                                                                  |");
-		        System.out.println("|------------------------------------------------------------------|");
-		    }
-	 public Listeners getListener() {
-		 return this.listeners;
-	 }
-	    
-	 public Map<String, Integer> getTimer() {
-	     return this.timer;
-	 }
-	    public Integer getTimer1(String nick) {
-	    	if(timer.containsKey(nick)) {
-	    		return timer.get(nick);
-	    	} else throw new IllegalStateException("nick not in map.");
 	    }
+	    listeners = new Listeners(this);
+	    Bukkit.getPluginManager().registerEvents(listeners, this);
+	    getCommand("confirm").setExecutor(new ConfirmCommand(this));
+	  }
+    
+	@Override
+	public void onDisable() {
+		Bukkit.getScheduler().cancelTasks(this);
+	}
+	
+	public Listeners getListener() {
+		return this.listeners;
+	}
+	    
+	public Map<String, Integer> getTimer() {
+		return this.timer;
+	}
+	
+	public Integer getTimer1(String nick) {
+		if(timer.containsKey(nick)) {
+			return timer.get(nick);
+		} else throw new IllegalStateException("nick not in map.");
+	}
 }
 
